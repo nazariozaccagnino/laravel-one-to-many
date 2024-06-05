@@ -11,6 +11,9 @@
             <li>
                 <a href="{{route('admin.projects.index')}}">Projects</a>
             </li>
+            <li>
+                <a href="{{route('admin.types.index')}}">Types</a>
+            </li>
         </ul>
     </div>
 

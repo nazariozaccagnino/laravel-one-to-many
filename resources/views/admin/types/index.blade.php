@@ -18,20 +18,18 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($projects as $project)
+      @foreach($types as $type)
       <tr>
-      <th scope="row">{{$project->id}}</th>
-      <td>{{$project->title}}</td>
-      <td>{{$project->content}}</td>
-      <td>{{$project->created_at}}</td>
-      <td>{{$project->updated_at}}</td>
+      <th scope="row">{{$type->id}}</th>
+      <td>{{$type->name}}</td>
+      <td>{{$type->slug}}</td>
       <td>
-        <a href="{{route('admin.projects.show', $project->slug)}}"><button type="button" class="btn btn-primary btn-sm">Show</button></a>
-        <a href="{{route('admin.projects.edit', $project->slug)}}"><button type="button" class="btn btn-success btn-sm">Edit</button></a>
-        <form action="{{route('admin.projects.destroy', $project->slug)}}" method="POST" class="d-inline-block">
+        <a href="{{route('admin.types.show', $type->slug)}}"><button type="button" class="btn btn-primary btn-sm">Show</button></a>
+        <a href="{{route('admin.types.edit', $type->slug)}}"><button type="button" class="btn btn-success btn-sm">Edit</button></a>
+        <form action="{{route('admin.types.destroy', $type->slug)}}" method="POST" class="d-inline-block">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-sm" data-item-title="{{ $project->title }}">Delete
+        <button type="submit" class="btn btn-danger btn-sm" data-item-title="{{ $type->name }}">Delete
         </button>
         </form>
       </td>
@@ -40,7 +38,7 @@
     </tbody>
   </table>
       <div class="d-flex justify-content-center">
-      <a href="{{route('admin.projects.create', $project->slug)}}"><button type="button" class="btn btn-warning">Add new project</button></a>
+      <a href="{{route('admin.types.create', $type->slug)}}"><button type="button" class="btn btn-warning">Add new project</button></a>
       </div>
     </div>
 </section>
