@@ -15,5 +15,8 @@
         <a href="{{route('admin.projects.index')}}" class="btn btn-primary btn-sm">Return</a>
         </div>
     </div>
+    <div>
+        Nome Tipologia: {{$project->type->name}}
+    </div>
 </section>
 @endsection
