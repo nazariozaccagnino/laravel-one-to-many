@@ -38,7 +38,8 @@ class ProjectController extends Controller
         $form_data = $request->validated();
         $form_data['slug'] = Project::generateSlug($form_data['title']);
         if($request->hasFile('image')){
-            $path = Storage::put('img_up', $request->image);
+            $name = $request->image->getClientOriginalName();
+            $path = Storage::putFileAs('updatedimages', $request->image, $name);
             $form_data['image'] = $path;
         };
         $new_project = Project::create($form_data);
@@ -65,11 +66,17 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreProjectRequest $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->validated();
         if ($project->title !== $form_data['title']) {
             $form_data['slug'] = Project::generateSlug($form_data['title']);
+        }
+        if($request->hasFile('image')){
+            $name = $request->image->getClientOriginalName();
+            $path = Storage::putFileAs('updatedimages', $request->image, $name);
+            dd($path);
+            $form_data['image'] = $path;
         }
         $project->update($form_data);
         return redirect()->route('admin.projects.show', $project->slug);
