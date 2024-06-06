@@ -18,7 +18,7 @@
         <input type="text" class="form-control" id="content" name="content" value="{{$project->content}}">
       </div>
       <div class="mb-3">
-        <img id="uploadPreview" width="100" src="/images/placeholder.png">
+        <img id="uploadPreview" width="100" src="/images/placeholder.jpg" class="p-2">
         <label for="image" class="form-label">Image</label>
         <input type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror" id="uploadImage"
           name="image" value="{{ old('image') }}" maxlength="255">
